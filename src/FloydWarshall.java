@@ -1,14 +1,23 @@
 /**
- * @author MAAG
- *
+ * Marcos Diaz y Daniel Machic
+ * Hoja de Trabajo #10
+ * 21/05/2023
+ * Clase que implementa el algortimo Floyd-Warshall para calcular las rutas mas cortas
  */
+
 public class FloydWarshall {
 
 	private int[][] distancias;
 	private String[][] recorridos;
 	private String[] vertices;
 	private int SIZE;
-	
+
+	/**
+	 * Constructor de la clase
+	 * @param _distancias
+	 * @param _recorridos
+	 * @param matriz_size
+	 */
 	public FloydWarshall(int [][]_distancias, String[][] _recorridos, int matriz_size) {
 		SIZE = matriz_size;
 		distancias = _distancias;
