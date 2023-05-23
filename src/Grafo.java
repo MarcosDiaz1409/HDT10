@@ -23,6 +23,14 @@ public class Grafo{
             Arrays.fill(MatrizAdjacencia[i], 0);
         }
     }
+    
+    /**
+     * Metodo para mostrar obtener la matriz de adyacencia actual
+     * @return MatrizAdjacencia
+     */
+    public int[][] getMatrizAdyacencia() {
+        return MatrizAdjacencia;
+    }
 
     /**
      * Metodo para agregar un arco
@@ -74,9 +82,9 @@ public class Grafo{
      * Metodo para calcular el centro del grafo
      * @return int
      */
-    public int calculateGraphCenter() {
+    public int calcularCentroGrafo() {
 
-        int[] distanciaVertices = new int[numVertices];
+    	int[] distanciaVertices = new int[numVertices];
         for (int i = 0; i < numVertices; i++) {
             distanciaVertices[i] = 0;
             for (int j = 0; j < numVertices; j++) {
@@ -93,6 +101,7 @@ public class Grafo{
             }
         }
         return centro;
+        
     }
 
 
