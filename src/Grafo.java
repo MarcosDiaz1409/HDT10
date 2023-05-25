@@ -80,28 +80,41 @@ public class Grafo{
 
     /**
      * Metodo para calcular el centro del grafo
-     * @return int
-     */
-    public int calcularCentroGrafo() {
-
-    	int[] distanciaVertices = new int[numVertices];
-        for (int i = 0; i < numVertices; i++) {
-            distanciaVertices[i] = 0;
-            for (int j = 0; j < numVertices; j++) {
-                distanciaVertices[i] += MatrizAdjacencia[i][j];
-            }
-        }
-
-        int centro = 0;
-        int minSum = Integer.MAX_VALUE;
-        for (int i = 0; i < numVertices; i++) {
-            if (distanciaVertices[i] < minSum) {
-                minSum = distanciaVertices[i];
-                centro = i;
-            }
-        }
-        return centro;
+     * @return String[]
+     */ 
+    public static String[] calcularCentro(FloydWarshall grafo) {
         
+    	int[][] distancias = grafo.getDistancias();
+        int SIZE = grafo.getSIZE();
+
+        // Inicializar el arreglo de sumas de distancias
+        int[] sumasDistancias = new int[SIZE];
+        Arrays.fill(sumasDistancias, 0);
+
+        // Calcular las sumas de distancias para cada vértice
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                sumasDistancias[i] += distancias[i][j];
+            }
+        }
+
+        // Encontrar el índice del vértice con la mínima suma de distancias
+        int indiceCentro = 0;
+        int minSumaDistancias = sumasDistancias[0];
+        for (int i = 1; i < SIZE; i++) {
+            if (sumasDistancias[i] < minSumaDistancias) {
+                minSumaDistancias = sumasDistancias[i];
+                indiceCentro = i;
+            }
+        }
+
+        // Obtener el nombre de los vértices del centro
+        String[][] recorridos = grafo.getRecorridos();
+        String[] centro = new String[1];
+        centro[0] = recorridos[0][indiceCentro];
+
+        return centro;
+    	
     }
 
 
