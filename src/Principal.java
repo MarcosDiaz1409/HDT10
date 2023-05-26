@@ -8,6 +8,26 @@ import java.io.IOException;
 
 public class Principal{
 
+      // Se crea el ArrayList que almacena todas las lineas del archivo
+      ArrayList<String[]> datos = new ArrayList<>();
+
+      // Lee el archivo de texto y agrega todas las lineas al ArrayList anterior
+      File file = new File("C:/Ejemplos/logistica.txt"); // Poner aqui la direccion del archivo de texto a utilizar
+      try {
+         try (BufferedReader br = new BufferedReader(new FileReader(file))){
+              
+             String linea;
+             while ((linea = br.readLine()) != null) {
+                 String[] fila = linea.split(" ");
+                 datos.add(fila);
+             }
+
+         }
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+
+
     public static void main(String[] args){
 
         boolean continuar = false;
